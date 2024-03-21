@@ -26,14 +26,12 @@ async function searchTextOnGoogle() {
 
     const capabilities = {
         "browserName": "Chrome",
-        "browserVersion": "latest",
-        "LT:Options": {
-            // "platformName": "Windows 10",
-            name: 'Test 1', // name of the test
-            build: 'NodeJS build', // name of the build
-            "project": "Untitled",
+        "lt:options": {
             "w3c": true,
-            "plugin": "node_js-node_js"
+            "platformName": "android",
+            "deviceName": "Pixel 3",
+            "platformVersion": "10",
+            "smartUI.project": "Mobile browser Virtual device SmartUI JS", 
         }
     };
 
@@ -53,6 +51,8 @@ async function searchTextOnGoogle() {
         console.log("Successfully clicked first list item.");
         await driver.findElement(webdriver.By.name('li2')).click();
         console.log("Successfully clicked second list item.");
+
+        await driver.executeScript("smartui.takeScreenshot=Image1");
 
         await driver.findElement(webdriver.By.id('sampletodotext')).sendKeys('Complete Lambdatest Tutorial\n');
         await driver.findElement(webdriver.By.id('addbutton')).click();
